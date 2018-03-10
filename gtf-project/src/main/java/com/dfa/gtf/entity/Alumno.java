@@ -92,7 +92,7 @@ public class Alumno extends Usuario {
 		}
 		
 		// Interrelaciones
-		public List<Asignatura> getAsignaturas() {
+		public List<Asignatura> getAsignaturasAlumno() {
 			return asignaturasAlumno;
 		}
 		
@@ -109,7 +109,7 @@ public class Alumno extends Usuario {
 		}
 		
 		// Interrelaciones
-		public void setAsignaturas(List<Asignatura> asignaturas) {
+		public void setAsignaturasAlumno(List<Asignatura> asignaturas) {
 			this.asignaturasAlumno = asignaturas;
 		}
 		

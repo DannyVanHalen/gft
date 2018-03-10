@@ -91,7 +91,7 @@ public class Profesor extends Usuario {
 		}
 		
 		// Interrelaciones
-		public List<Asignatura> getAsignaturas() {
+		public List<Asignatura> getAsignaturasProfesor() {
 			return asignaturasProfesor;
 		}
 		
@@ -108,7 +108,7 @@ public class Profesor extends Usuario {
 		}
 		
 		// Interrelaciones
-		public void setAsignaturas(List<Asignatura> asignaturas) {
+		public void setAsignaturasProfesor(List<Asignatura> asignaturas) {
 			this.asignaturasProfesor = asignaturas;
 		}
 		
