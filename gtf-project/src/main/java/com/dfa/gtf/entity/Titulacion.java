@@ -51,6 +51,14 @@ public class Titulacion {
 		this.nombre = nombre;
 	}
 	
+	/*Métodos Funcionales*/
 	
+	public boolean altaAsignatura(Asignatura asignatura) {
+		return asignaturas.add(asignatura);
+	}
+	
+	public boolean bajaAsignatura(Asignatura asignatura) {
+		return asignaturas.remove(asignatura);
+	}
 	
 }
