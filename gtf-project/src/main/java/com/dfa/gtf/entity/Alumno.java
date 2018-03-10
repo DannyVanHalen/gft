@@ -1,6 +1,9 @@
 package com.dfa.gtf.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Alumno extends Usuario {
@@ -9,15 +12,27 @@ public class Alumno extends Usuario {
 	private String apellido;
 	private String tlf;
 	
+	/*
+	 * Interrelación Alumno-Asignatura N:M Bidireccional -> Entidad Principal
+	 */
+	
+	@ManyToMany
+	private List<Asignatura> asignaturasAlumno;
+	
 	
 	public Alumno() {}
 	
 	public Alumno(String login, String maiLogin, String pass, String rol,
-			String nombre, String apellido, String tlf) {
+			String nombre, String apellido, String tlf,
+			List<Asignatura> asignaturas) {
+		
 		super(login, maiLogin,pass,rol);
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tlf = tlf;
+		
+		this.asignaturasAlumno = asignaturas;
+		
 	}
 	
 	/* Métodos heredados de Usuario*/
@@ -76,6 +91,11 @@ public class Alumno extends Usuario {
 			return tlf;
 		}
 		
+		// Interrelaciones
+		public List<Asignatura> getAsignaturas() {
+			return asignaturasAlumno;
+		}
+		
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
@@ -87,4 +107,21 @@ public class Alumno extends Usuario {
 		public void setTlf(String tlf) {
 			this.tlf = tlf;
 		}
+		
+		// Interrelaciones
+		public void setAsignaturas(List<Asignatura> asignaturas) {
+			this.asignaturasAlumno = asignaturas;
+		}
+		
+		/*Métodos Funcionales*/
+		public boolean agregarAsignatura(Asignatura asignatura) {
+			return asignaturasAlumno.add(asignatura);
+		}
+		
+		public boolean borrarAsignatura (Asignatura asignatura) {
+			return asignaturasAlumno.remove(asignatura);
+		}
+		
+		
+		
 }

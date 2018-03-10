@@ -1,6 +1,9 @@
 package com.dfa.gtf.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Profesor extends Usuario {
@@ -10,14 +13,25 @@ public class Profesor extends Usuario {
 	private String tlf;
 	
 	
+	/*
+	 * Interrelación Profesor-Asignatura N:M Bidireccional -> Entidad Principal
+	 */
+	@ManyToMany
+	private List<Asignatura> asignaturasProfesor;
+	
 	public Profesor() {}
 	
 	public Profesor(String login, String maiLogin, String pass, String rol,
-			String nombre, String apellido, String tlf) {
+			String nombre, String apellido, String tlf,
+			List<Asignatura> asignaturas) {
+		
 		super(login, maiLogin,pass,rol);
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tlf = tlf;
+		
+		this.asignaturasProfesor = asignaturas;
+		
 	}
 	
 	/* Métodos heredados de Usuario*/
@@ -76,6 +90,11 @@ public class Profesor extends Usuario {
 			return tlf;
 		}
 		
+		// Interrelaciones
+		public List<Asignatura> getAsignaturas() {
+			return asignaturasProfesor;
+		}
+		
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
@@ -87,5 +106,12 @@ public class Profesor extends Usuario {
 		public void setTlf(String tlf) {
 			this.tlf = tlf;
 		}
+		
+		// Interrelaciones
+		public void setAsignaturas(List<Asignatura> asignaturas) {
+			this.asignaturasProfesor = asignaturas;
+		}
+		
+		
 		
 }
