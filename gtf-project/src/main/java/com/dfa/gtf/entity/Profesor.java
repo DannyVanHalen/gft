@@ -112,6 +112,15 @@ public class Profesor extends Usuario {
 			this.asignaturasProfesor = asignaturas;
 		}
 		
+		/*Métodos Funcionales*/
+		public boolean asociarAsignatura(Asignatura asignatura) {
+			return asignaturasProfesor.add(asignatura);
+		}
+		
+		public boolean desasociarAsignaturaProfesor(Asignatura asignatura) {
+			return asignaturasProfesor.remove(asignatura);
+		}
+		
 		
 		
 }
